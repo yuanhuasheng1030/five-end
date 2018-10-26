@@ -1,12 +1,17 @@
 import Vue from 'vue';
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
-import App from './App.vue';
-import Index from "./components/index.vue"
+import router from './router'
+import store from './store'
+import Login from './components/login/index.vue'
+import App from './App.vue'
+
+import Index from "./components/manage/beforeStage"
 
 Vue.use(ElementUI);
-
+Vue.config.productionTip = false
 new Vue({
-  el: '#app',
-  render: h => h(Index)
-});
+  router,
+  store,
+  render: h => h(App)
+}).$mount('#app');
