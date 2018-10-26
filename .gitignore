@@ -1,5 +1,6 @@
 .DS_Store
 node_modules
+/routes-3031/node_modules
 /dist
 
 # local env files
