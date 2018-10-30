@@ -5,24 +5,14 @@
       <el-container class='main'>
         <el-aside class='main' width="200px" style="background-color: rgb(238, 241, 246)">
           <el-menu :default-active="path" :router="true" class="el-menu-vertical-demo">
-            <el-menu-item index="/beforeStage/gateapply">
+            <el-menu-item index="/beforeStage/gateapply?id=5bd2cbf17f4f82100392f886">
               <span slot="title">
-                门店申请系统
+                门店管理系统
               </span>
             </el-menu-item>
-            <el-menu-item index="/beforeStage/orderManage">
+            <el-menu-item index="/beforeStage/tradeManage?id=5bd2cbf17f4f82100392f886">
               <span slot="title">
-                订单管理系统
-              </span>
-            </el-menu-item>
-            <el-menu-item index="/beforeStage/tradeManage">
-              <span slot="title">
-                商品管理系统
-              </span>
-            </el-menu-item>
-            <el-menu-item index="/beforeStage/serviceManage">
-              <span slot="title">
-                服务管理系统
+                商店管理系统
               </span>
             </el-menu-item>
           </el-menu>
@@ -38,11 +28,19 @@
 </template>
 <script>
 export default {
+  data:function(){
+return{
+    id:""
+}
+  },
   computed: {
     path() {
       return this.$router.history.current.path;
     }
-  }
+  },
+  created() {
+    // this.id=
+  },
 };
 </script>
 <style>
