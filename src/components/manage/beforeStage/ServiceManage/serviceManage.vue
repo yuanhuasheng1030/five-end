@@ -55,7 +55,17 @@
       </template>
     </el-table-column>
   </el-table>
-  <Page></Page>
+  <!-- <Page></Page> -->
+  <el-pagination
+      class="pagination"
+      @size-change="handleSizeChange"
+      @current-change="handleCurrentChange"
+      :current-page="1"
+      :page-sizes="[3, 5, 7, 10]"
+      :page-size="pagination.eachpage"
+      layout="total, sizes, prev, pager, next, jumper"
+      :total="pagination.total">
+    </el-pagination>
 </div>
 </template>
 
@@ -69,6 +79,7 @@ import axios from 'axios';
 export default {
   data: function() {
     return {
+      eachpage: 3,
     };
   },
   components: { Search, Page, Add, Update },
@@ -88,8 +99,16 @@ export default {
       });
     },
     handleEdit(index, row) {
+          console.log(this.pagination)
       this.setService(row._id);
       this.setDialogUpdateVisible(true);
+    },
+    handleSizeChange(eachpage){
+      this.setServices({rows: eachpage});
+      this.eachpage=eachpage;
+    },
+    handleCurrentChange(curpage){
+      this.setServices({page: curpage,rows: this.eachpage});
     }
   }
 };
@@ -113,10 +132,14 @@ a {
 }
 .searchAndAdd {
   display: flex;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
 }
 .search {
   width: 400px;
-  margin-right: 30px;
+  margin-right: 20px;
+}
+.pagination{
+  margin-top: 20px;
+  float: right;
 }
 </style>
