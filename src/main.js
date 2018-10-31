@@ -3,7 +3,7 @@ import './plugins/axios'
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import router from './router'
-import store from './store'
+import store from './store/index'
 import Login from './components/login/index.vue'
 import App from './App.vue'
 
