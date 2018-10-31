@@ -17,22 +17,12 @@
                   <el-menu :default-active="path" :router="true" class="el-menu-vertical-demo">
                       <el-menu-item index="/beforeStage/gateapply">
                         <span slot="title">
-                          门店申请系统
-                        </span>
-                      </el-menu-item>
-                      <el-menu-item index="/beforeStage/orderManage">
-                        <span slot="title">
-                          订单管理系统
+                          门店管理系统
                         </span>
                       </el-menu-item>
                       <el-menu-item index="/beforeStage/tradeManage">
                         <span slot="title">
-                          商品管理系统
-                        </span>
-                      </el-menu-item>
-                      <el-menu-item index="/beforeStage/serviceManage">
-                        <span slot="title">
-                          服务管理系统
+                          商铺管理系统
                         </span>
                       </el-menu-item>
                   </el-menu>

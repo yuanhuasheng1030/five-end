@@ -90,7 +90,8 @@
 <script>
 import axios from "axios";
 import lodash from "lodash";
-import { mapState, mapActions, mapMutations } from "vuex";
+import { createNamespacedHelpers } from 'vuex'
+const { mapActions,mapState,mapMutations } = createNamespacedHelpers('yl')
 export default {
   data() {
     return {
