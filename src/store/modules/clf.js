@@ -3,94 +3,129 @@ import Vuex from 'vuex'
 import axios from 'axios'
 Vue.use(Vuex)
 const state = {
-  goods: [],
-  good: {},
-  pagenation:{}
+  // 宠主
+  petsKeepers: [],
+  petsKeeper: {},
+
+  paginationPetsKeepers: {},
+  pagination: {},
+  // 供应商
+  suppliers: [],
+  supplier: {},
+  paginationSuppliers: {}
 }
 const mutations = {
-  setGoods(state, goods) {
-    state.goods = goods;
+  // 宠主
+  setPetsKeepers(state, petsKeepers) {
+    state.petsKeepers = petsKeepers;
   },
-  opened(state, opened) {
-    state.opened = opened
+  setPetsKeeper(state, petsKeeper) {
+    state.petsKeeper = petsKeeper;
   },
-  setGood(state, good) {
-    state.good = good
+  setPagination(state, pagination) {
+    state.pagination = pagination;
   },
-  pagenation(state, pagenation) {
-    state.pagenation = pagenation
+  // setPaginationPetsKeepers(state,paginationPetsKeepers) {
+  //   state.paginationPetsKeepers = paginationPetsKeepers;
+  // },
+  // 供应商
+  setSuppliers(state, suppliers) {
+    state.suppliers = suppliers;
   },
+  setSupplier(state, supplier) {
+    state.supplier = supplier;
+  }
+  // setPaginationSuppliers(state,paginationSuppliers) {
+  //   state.paginationSuppliers = paginationSuppliers;
+  // },
 }
 const getters = {
 
 }
 const actions = {
-  setGood({
-    commit,
-    dispatch
-  }, {
-    id,
-    index
-  }) {
-    console.log(23, {
-      id,
-      index
-    });
-    axios({
-      url: "/trademanage/good",
-      method: "get",
-      params: {
-        id,
-        index
-      }
-    }).then(response => {
-      commit('setGood', response.data);
-    });
-  },
-  setGoods({
-    commit,
-    dispatch
-  }, payload) {
+  setPetsKeepers({
+    commit
+  }, payload = {}) {
     axios({
       method: "get",
-      url: "/trademanage/table/shops/",
+      url: "/petsKeepers/petsKeepers",
       params: {
-        id: payload.id,
-        page: payload.page ||this.state.pagenation.page|| 1,
-        rows: payload.rows ||this.state.pagenation.rows|| 2,
-        type: payload.type,
-        value: payload.value
+        type: payload.type || '',
+        value: payload.value || '',
+        page: payload.page || 1,
+        rows: payload.rows || 3
       }
-    }).then(response => {
-      if(payload.type){
-        console.log(22, response.data);
-      commit('setGoods', response.data);
-      }else{
-        commit('setGoods', response.data);
-        commit('pagenation', response.data.page);
-      }
-      // commit('setPage',response.data);
+    }).then((response) => {
+      console.log(response.data);
+      // if(response.data.rows.length= 0 && response.data.curpage!=1){
+      //   console.log('====================================');
+      //   console.log("budengyuyi");
+      //   console.log('====================================');
+      //   commit('setPetsKeepers', response.data.rows);
+      //   commit('setPagination', response.data);
+      // }else if(response.data.rows.leng=0&&response.data.curpage == 1){
+      //   commit('setPetsKeepers', response.data.rows);
+      //   commit('setPagination', response.data);
+      // }
+      console.log("进入渲染store", response.data);
+      commit('setPetsKeepers', response.data.rows);
+      commit('setPagination', response.data);
     });
   },
-  setAdd({
-    commit,
-    dispatch
-  }, payload) {
+  setPetsKeeper({
+    commit
+  }, id) {
+    console.log(9, id);
     axios({
-      url: '/trademanage/add',
-      method: 'post',
-      data: {
-        ...payload
-      }
-    }).then(() => {
-      dispatch('setGoods', {
-        id: payload.id
-      });
-    })
+      method: "get",
+      url: "/petsKeepers/" + id
+    }).then((response) => {
+      console.log('进入store里面的异步修改');
+      commit('setPetsKeeper', response.data);
+    });
   },
+
+
+
+
+
+
+
+  // 供应商
+  setSuppliers({
+    commit
+  }, payload = {}) {
+    axios({
+      method: "get",
+      url: "/suppliers/suppliers",
+      params: {
+        type: payload.type || '',
+        value: payload.value || '',
+        page: payload.page || 1,
+        rows: payload.rows || 3
+      }
+    }).then((response) => {
+      // console.log("进入供应商页面管理");
+      commit('setSuppliers', response.data.rows);
+      commit('setPagination', response.data);
+    });
+  },
+
+  // 修改数据
+  setSupplier({
+    commit
+  }, id) {
+    axios({
+      method: "get",
+      url: "/suppliers/" + id
+    }).then((response) => {
+      console.log("供应商修改", response.data);
+      commit('setSupplier', response.data);
+    });
+  }
 }
 export default {
-  namespaced:true,
+  namespaced: true,
   state,
   mutations,
   getters,
