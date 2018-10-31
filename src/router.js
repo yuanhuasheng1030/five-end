@@ -28,6 +28,16 @@ export default new Router({
       component: Login
     },
     {
+      path: '/ri',
+      name: 'ri',
+      component: Ri
+    },
+    {
+      path: '/tj',
+      name: 'tj',
+      component: Tj
+    },
+    {
       path: '/backStage',//后台
       component: BackStage,
       children: [{
