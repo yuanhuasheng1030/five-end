@@ -16,7 +16,8 @@ import Page from "./goodscomponents/page";
 import Add from "./goodscomponents/Add";
 import Alter from "./goodscomponents/alter";
 import Find from "./goodscomponents/Find";
-import { mapActions, mapState, mapMutations } from "vuex";
+import { createNamespacedHelpers } from 'vuex'
+const { mapActions,mapState,mapMutations } = createNamespacedHelpers('yl')
 export default {
   components: {
     TableGoods,Add,Alter,Find,Page

@@ -1,13 +1,13 @@
 <template>
   <div>
     <Table />
-    <Page />
   </div>
 </template>
 <script>
 import Page from './Page'
 import Table from './Table'
-import {mapActions,mapState,mapMutations} from 'vuex'
+import { createNamespacedHelpers } from 'vuex'
+const { mapActions,mapState,mapMutations } = createNamespacedHelpers('yl')
 export default {
   components:{
     Table,Page
