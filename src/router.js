@@ -16,6 +16,7 @@ import ChecknoPass from './components/manage/backStage/UserManage/ChecknoPass.vu
 import NoCheck from './components/manage/backStage/UserManage/NoCheck.vue'
 import GateApply from './components/manage/beforeStage/GateApply/gateApply.vue'
 import TradeManage from './components/manage/beforeStage/TradeManage/tradeManage.vue'
+import DataAnalysis from './components/manage/backStage/DataAnalysis/dataAnalysis.vue'
 
 Vue.use(Router)
 
@@ -67,6 +68,7 @@ export default new Router({
         {
 
           path: 'userManage',//用户管理
+<<<<<<< HEAD
           component: UserManage,
           children: [{
             path: 'checkPass',//门店申请
@@ -83,6 +85,13 @@ export default new Router({
             component: NoCheck
           }
         ]
+=======
+          component: UserManage
+        },
+        {
+          path: 'dataAnalysis',//数据分析
+          component: DataAnalysis
+>>>>>>> 9f936916a6173484c6007c068165ffc9fbeee86e
         }
       ]
     },
