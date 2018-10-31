@@ -1,14 +1,30 @@
 <template>
-<el-row>
-  <el-button type="primary">供应商管理</el-button>
-</el-row>
+  <div>
+    <div style="display:flex;">
+      <AddSuppliers></AddSuppliers>
+      <SearchSuppliers></SearchSuppliers>
+    </div>
+    <SuppliersTable style="margin-top:15px;" :updateVisible.sync="updateVisible"></SuppliersTable>
+    <UpdateSuppliers :updateVisible.sync="updateVisible"></UpdateSuppliers>
+    <!-- <SuppliersPage></SuppliersPage> -->
+  </div>
 </template>
 
 <script>
+import AddSuppliers from "./AddSuppliers.vue";
+import SuppliersTable from "./SuppliersTable.vue";
+import UpdateSuppliers from "./UpdateSuppliers.vue";
+import SearchSuppliers from "./SearchSuppliers.vue";
+// import SuppliersPage from "./SuppliersPage.vue"
 export default {
-  name: 'HelloWorld',
-  props: {
-    msg: String
+  data: function() {
+    return {
+      updateVisible: false,
+    };
+  },
+  components:{
+    AddSuppliers,SuppliersTable,UpdateSuppliers,SearchSuppliers
+    // SuppliersPage
   }
 }
 </script>
