@@ -66,6 +66,11 @@ export default new Router({
           component: SupplierManage
         },
         {
+  
+          path: 'dataAnalysis',//服务管理
+          component: DataAnalysis
+        },
+        {
 
           path: 'userManage',//用户管理
           component: UserManage,
