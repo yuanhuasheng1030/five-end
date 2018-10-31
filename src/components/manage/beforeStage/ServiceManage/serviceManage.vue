@@ -87,7 +87,7 @@ export default {
     this.setServices();
   },
   computed: {
-    ...mapState(["services", "pagination"])
+    ...mapState(["services", "pagination","search"])
   },
   methods: {
     ...mapActions(["setServices","setService","updateService"]),
@@ -95,7 +95,7 @@ export default {
     handleDelete(index, row) {
       this.id=row._id;
       axios.delete("/services/" + row._id, {}).then(response => {
-        this.setServices();
+        this.setServices({page:this.pagination.curpage});
       });
     },
     handleEdit(index, row) {
@@ -104,11 +104,11 @@ export default {
       this.setDialogUpdateVisible(true);
     },
     handleSizeChange(eachpage){
-      this.setServices({rows: eachpage});
+      this.setServices({rows: eachpage, ...this.search});
       this.eachpage=eachpage;
     },
     handleCurrentChange(curpage){
-      this.setServices({page: curpage,rows: this.eachpage});
+      this.setServices({page: curpage,rows: this.eachpage, ...this.search});
     }
   }
 };

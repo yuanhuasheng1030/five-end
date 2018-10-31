@@ -12,6 +12,7 @@ import GateApply from './components/manage/beforeStage/GateApply/gateApply.vue'
 import OrderManage from './components/manage/beforeStage/OrderManage/orderManage.vue'
 import ServiceManage from './components/manage/beforeStage/ServiceManage/serviceManage.vue'
 import TradeManage from './components/manage/beforeStage/TradeManage/tradeManage.vue'
+import DataAnalysis from './components/manage/backStage/DataAnalysis/dataAnalysis.vue'
 
 Vue.use(Router)
 
@@ -49,6 +50,10 @@ export default new Router({
 
           path: 'userManage',//用户管理
           component: UserManage
+        },
+        {
+          path: 'dataAnalysis',//数据分析
+          component: DataAnalysis
         }
       ]
     },
