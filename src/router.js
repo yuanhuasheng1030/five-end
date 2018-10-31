@@ -9,8 +9,6 @@ import PetManage from './components/manage/backStage/PetManage/petManage.vue'
 import SupplierManage from './components/manage/backStage/SupplierManage/supplierManage.vue'
 import UserManage from './components/manage/backStage/UserManage/userManage.vue'
 import GateApply from './components/manage/beforeStage/GateApply/gateApply.vue'
-import OrderManage from './components/manage/beforeStage/OrderManage/orderManage.vue'
-import ServiceManage from './components/manage/beforeStage/ServiceManage/serviceManage.vue'
 import TradeManage from './components/manage/beforeStage/TradeManage/tradeManage.vue'
 import DataAnalysis from './components/manage/backStage/DataAnalysis/dataAnalysis.vue'
 
@@ -61,22 +59,11 @@ export default new Router({
       path: '/beforeStage',//前台
       component: BeforeStage,
       children: [{
-          path: 'gateApply',//门店申请
+          path: 'gateApply',//门店管理
           component: GateApply
         },
         {
-
-          path: 'orderManage',//订单管理
-          component: OrderManage
-        },
-        {
-
-          path: 'serviceManage',//服务管理
-          component: ServiceManage
-        },
-        {
-
-          path: 'tradeManage',//商品管理
+          path: 'tradeManage',//商店管理
           component: TradeManage
         }
       ]

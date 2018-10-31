@@ -79,7 +79,10 @@ export default {
     path() {
       return this.$router.history.current.path;
     }
-  }
+  },
+  created() {
+    // this.id=
+  },
 };
 </script>
 
