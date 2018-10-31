@@ -8,8 +8,8 @@ const state = {
     pagination: {},
     search: {},
     dialogUpdateVisible: false,
-    username: "张雨霖",
-    shopName: "爱宠小店"
+    username: "",
+    shopName: ""
 }
 const mutations = {
   setServices(state, services) {
@@ -26,6 +26,12 @@ const mutations = {
   },
   setDialogUpdateVisible(state, upload) {
     state.dialogUpdateVisible = upload
+  },
+  setShopName(state, shopName){
+    state.shopName = shopName;
+  },
+  setUsername(state, username){
+    state.username = username
   }
 }
 const getters = {
@@ -39,8 +45,8 @@ const actions = {
       params: {
         name: payload.name || '',
         value: payload.value || '',
-        username: this.state.username,
-        shopName: this.state.shopName,
+        username: this.state.cdw.username,
+        shopName: this.state.cdw.shopName,
         page: payload.page || 1,
         rows: payload.rows || 3
       }

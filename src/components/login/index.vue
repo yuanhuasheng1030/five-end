@@ -80,6 +80,9 @@ import axios from 'axios';
                        this.$router.push("backStage");    
                   }else if(response.data.status == 1){
                         // console.log("商户登录成功")
+                        console.log('====================================');
+                        console.log(123,response.data._id);
+                        console.log('====================================');
                           this.$router.push("beforeStage?id="+response.data._id);  
                   }else{
                    this.$notify({

@@ -15,14 +15,9 @@
                   </div>
 
                   <el-menu :default-active="path" :router="true" class="el-menu-vertical-demo">
-                      <el-menu-item index="/beforeStage/gateapply">
+                      <el-menu-item :index="mdNavergate">
                         <span slot="title">
                           门店管理系统
-                        </span>
-                      </el-menu-item>
-                      <el-menu-item index="/beforeStage/tradeManage">
-                        <span slot="title">
-                          商铺管理系统
                         </span>
                       </el-menu-item>
                   </el-menu>
@@ -66,6 +61,10 @@ export default {
     }
   },
   computed: {
+    
+    mdNavergate(){
+      return "/beforeStage/gateApply?id="+location.href.split("=")[1]
+    },
     path() {
       return this.$router.history.current.path;
     }

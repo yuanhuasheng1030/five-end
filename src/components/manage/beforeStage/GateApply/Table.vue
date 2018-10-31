@@ -61,6 +61,8 @@
 
 <script>
 import axios from "axios";
+import { createNamespacedHelpers } from 'vuex'
+const { mapActions,mapState,mapMutations } = createNamespacedHelpers('cdw')
 export default {
   data() {
     return {
@@ -68,13 +70,17 @@ export default {
     };
   },
   methods: {
+    ...mapMutations(['setShopName']),
     message: function(item) {
       console.log(item);
       return 123;
     },
     rungoods: function(item) {
+
+
       console.log(221, item);
       this.$router.push("/beforeStage/tradeManage?shopsId=" + item._id);
+      this.setShopName(item.name);
     }
   },
   created() {
