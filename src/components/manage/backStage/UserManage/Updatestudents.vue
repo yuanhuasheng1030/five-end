@@ -23,8 +23,8 @@
 
 <script>
 import axios from "axios";
-import { mapState } from "vuex";
-import { mapMutations } from "vuex";
+import { createNamespacedHelpers } from 'vuex'
+const { mapState,mapMutations } = createNamespacedHelpers('zyl')
 export default {
   props: ["show"],
 

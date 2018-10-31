@@ -1,12 +1,39 @@
 <template>
-  <div>
-    商品管理
-  </div>
+  <el-tabs v-model="activeName" @tab-click="handleClick">
+    <el-tab-pane label="商品管理" name="first">
+    <Goods />
+    </el-tab-pane>
+    <el-tab-pane label="服务管理" name="second">服务管理</el-tab-pane>
+    <el-tab-pane label="订单管理" name="third">订单管理</el-tab-pane>
+  </el-tabs>
 </template>
 
 <script>
+// import Page from './Page'
+// import Table from './Table'
+import {mapActions,mapState,mapMutations} from 'vuex';
+import Goods from '../goodsManage';
 export default {
-  name: 'HelloWorld',
+  components:{
+    Goods
+  },
+  data:function(){
+    return{
+      id:'',
+      activeName: 'first'
+    }
+  },
+  created() {
+    let id =location.href.split("=")[1]
+  },
+  computed:{
+    
+  },
+  methods:{
+handleClick(tab, event) {
+        console.log(tab, event);
+      }
+  },
   props: {
     msg: String
   }
@@ -15,18 +42,4 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
 </style>

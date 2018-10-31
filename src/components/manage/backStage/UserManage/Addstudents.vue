@@ -24,6 +24,8 @@
 </template>
 
 <script>
+import { createNamespacedHelpers } from 'vuex'
+const { mapState } = createNamespacedHelpers('zyl')
 import axios from "axios";
 export default {
     props: ["show"],

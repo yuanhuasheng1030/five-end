@@ -40,8 +40,8 @@ import Checkpasspage from "./Checkpasspage.vue";
 import Updatestudents from "./Updatestudents.vue";
 import Addstudents from "./Addstudents.vue";
 import Search from "./Search.vue";
-import { mapState } from "vuex";
-import { mapMutations } from "vuex";
+import { createNamespacedHelpers } from 'vuex'
+const { mapState,mapMutations } = createNamespacedHelpers('zyl')
 export default {
   data() {
     return {};
