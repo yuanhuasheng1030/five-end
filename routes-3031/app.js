@@ -10,6 +10,7 @@ var regRouter = require('./routes/reg');
 var loginRouter = require('./routes/login');
 var studentsRouter = require('./routes/students');
 var movieRouter = require('./routes/movie');
+var lcRouter = require('./routes/lcRouter');
 var app = express();
 
 // view engine setup
@@ -28,6 +29,7 @@ app.use('/reg', regRouter);
 app.use('/login', loginRouter);
 app.use('/students', studentsRouter);
 app.use('/movie', movieRouter);
+app.use('/lcRouter', lcRouter);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));

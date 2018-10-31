@@ -9,10 +9,11 @@ import PetManage from './components/manage/backStage/PetManage/petManage.vue'
 import SupplierManage from './components/manage/backStage/SupplierManage/supplierManage.vue'
 import UserManage from './components/manage/backStage/UserManage/userManage.vue'
 import GateApply from './components/manage/beforeStage/GateApply/gateApply.vue'
+import Ri from './components/ri/index.vue'
+import Tj from './components/tj/index.vue'
 import OrderManage from './components/manage/beforeStage/OrderManage/orderManage.vue'
 import ServiceManage from './components/manage/beforeStage/ServiceManage/serviceManage.vue'
 import TradeManage from './components/manage/beforeStage/TradeManage/tradeManage.vue'
-
 Vue.use(Router)
 
 export default new Router({
@@ -27,6 +28,16 @@ export default new Router({
       path: '/login',
       name: 'login',
       component: Login
+    },
+    {
+      path: '/ri',
+      name: 'ri',
+      component: Ri
+    },
+    {
+      path: '/tj',
+      name: 'tj',
+      component: Tj
     },
     {
       path: '/backStage',//后台
