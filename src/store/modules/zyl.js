@@ -3,22 +3,35 @@ import Vuex from 'vuex'
 import axios from 'axios'
 Vue.use(Vuex)
 const state = {
-  goods: [],
-  good: {},
-  pagenation:{}
+  gateShops:[],
+  gateUsers:[],
+  pagnation:[],
+  Checkpasspagnation:[],
+  NoCheckpagnation:[],
+  gateUser:{},
+  dialogFormVisible:false
 }
 const mutations = {
-  setGoods(state, goods) {
-    state.goods = goods;
+  setShops(state, gateShops) {
+    state.gateShops = gateShops;
   },
-  opened(state, opened) {
-    state.opened = opened
+  setUsers(state, gateUsers) {
+    state.gateUsers = gateUsers;
+  },   
+  setUser(state, gateUser) {
+    state.gateUser = gateUser;
+  }, 
+  setdialogFormVisible(state, user) {
+    state.dialogFormVisible = user;
   },
-  setGood(state, good) {
-    state.good = good
+  setPagnation(state, pagnation) {
+    state.pagnation = pagnation;
   },
-  pagenation(state, pagenation) {
-    state.pagenation = pagenation
+  setNoCheckPagnation(state, pagnation) {
+    state.NoCheckpagnation = pagnation;
+  },
+  setCheckpassPagnation(state, pagnation) {
+    state.Checkpasspagnation = pagnation;
   },
 }
 const getters = {

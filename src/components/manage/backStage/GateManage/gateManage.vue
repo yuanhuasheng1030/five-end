@@ -1,32 +1,31 @@
 <template>
-<el-row>
-  <el-button>门店管理</el-button>
-</el-row>
-</template>
 
+<div>
+<el-menu :default-active="path" :router="true" class="el-menu-demo" mode="horizontal" @select="handleSelect">
+  <el-menu-item index="/backStage/gatemanage/nocheckGate">待审核门店</el-menu-item>
+  <el-menu-item index="/backStage/gatemanage/passgate">审核通过门店</el-menu-item>
+  <el-menu-item index="/backStage/gatemanage/nopassgate">审核未通过门店</el-menu-item>
+</el-menu>
+ <el-main>
+          <router-view />
+        </el-main>
+
+</div>
+</template>
 <script>
 export default {
-  name: 'HelloWorld',
-  props: {
-    msg: String
+   data() {
+    return {};
+  },
+   computed: {
+    path() {
+      return this.$router.history.current.path||"/backStage/gatemanage/nocheckGate";
+    }
   }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
+
 </style>

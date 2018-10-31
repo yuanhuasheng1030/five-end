@@ -27,6 +27,8 @@
 
 <script>
 import axios from 'axios';
+import { createNamespacedHelpers } from 'vuex'
+const { mapMutations } = createNamespacedHelpers('cdw')
   export default {
     data() {
       var validatePhone = (rule, value, callback) => {
@@ -62,6 +64,7 @@ import axios from 'axios';
       };
     },
     methods: {
+      ...mapMutations(["setUsername"]),
       submitForm(formName) {
         this.$refs[formName].validate((valid) => {
           if (valid) {
@@ -83,7 +86,8 @@ import axios from 'axios';
                         console.log('====================================');
                         console.log(123,response.data._id);
                         console.log('====================================');
-                          this.$router.push("beforeStage?id="+response.data._id);  
+                          this.$router.push("beforeStage?id="+response.data._id);
+                          this.setUsername(response.data.username);
                   }else{
                    this.$notify({
                           title: '登录失败',

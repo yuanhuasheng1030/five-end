@@ -51,7 +51,6 @@ const actions = {
     commit,
     dispatch
   }, payload) {
-    console.log('payload',payload,this.state)
     axios({
       method: "get",
       url: "/trademanage/table/shops/",
