@@ -51,13 +51,14 @@ const actions = {
     commit,
     dispatch
   }, payload) {
+    console.log('payload',payload,this.state)
     axios({
       method: "get",
       url: "/trademanage/table/shops/",
       params: {
         id: payload.id,
-        page: payload.page ||this.state.pagenation.page|| 1,
-        rows: payload.rows ||this.state.pagenation.rows|| 2,
+        page: payload.page ||this.state.yl.pagenation.page|| 1,
+        rows: payload.rows ||this.state.yl.pagenation.rows|| 2,
         type: payload.type,
         value: payload.value
       }

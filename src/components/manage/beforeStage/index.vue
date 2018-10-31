@@ -20,11 +20,6 @@
                           门店管理系统
                         </span>
                       </el-menu-item>
-                      <el-menu-item index="/beforeStage/tradeManage?id=5bd2c9857f4f82100392f884">
-                        <span slot="title">
-                          商铺管理系统
-                        </span>
-                      </el-menu-item>
                   </el-menu>
               </div>
           </el-aside>
@@ -56,9 +51,6 @@ export default {
         })
   },
   methods:{
-    mdNavergate(){
-      return "/beforeStage/gateApply?id="+location.href.split("=")[1]
-    },
     remove(){
         axios({
         type:"get",
@@ -69,6 +61,10 @@ export default {
     }
   },
   computed: {
+    
+    mdNavergate(){
+      return "/beforeStage/gateApply?id="+location.href.split("=")[1]
+    },
     path() {
       return this.$router.history.current.path;
     }

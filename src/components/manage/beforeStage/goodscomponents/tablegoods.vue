@@ -1,5 +1,7 @@
 <template>
-  <el-table :data="goods.ary" style="width: 100%">
+  
+  <div>
+    <el-table :data="goods.ary" style="width: 100%">
     <el-table-column type="expand">
       <template slot-scope="props">
         <el-form label-position="left" inline class="demo-table-expand">
@@ -50,6 +52,7 @@
       </template>
     </el-table-column>
   </el-table>
+  </div>
 </template>
 <style>
 .demo-table-expand {
@@ -101,8 +104,8 @@ export default {
   },
   created() {
 let id = location.href.split("=")[1];
+console.log(12,id)
   this.id=id;
-    
     this.setGoods({id});
   }
 };
