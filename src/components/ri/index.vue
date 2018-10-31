@@ -208,6 +208,7 @@ export default {
             method: "post",
             url: "/lcRouter/",
             data: {
+              id:location.href.split("=")[1],
               name: this.form.name,
               addr: this.form.addr,
               legalPerson: this.form.legalPerson,
@@ -221,7 +222,7 @@ export default {
             }
           }).then(response => {
             this.open();
-            this.$router.push("/beforeStage");
+            this.$router.push("/beforeStage/gateApply?id="+location.href.split("=")[1]);
           });
         }
       });

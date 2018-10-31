@@ -38,7 +38,6 @@
     <el-table-column fixed="right" label="操作">
       <template slot-scope="scope">
         <el-button @click="rungoods(scope.row)" type="success" round size="small">商店管理</el-button>
-
       </template>
     </el-table-column>
   </el-table>

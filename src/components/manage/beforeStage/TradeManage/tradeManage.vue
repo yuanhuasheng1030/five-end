@@ -6,7 +6,10 @@
     <el-tab-pane label="服务管理" name="second">
     <ServiceManage />
     </el-tab-pane>
-    <el-tab-pane label="订单管理" name="third">订单管理</el-tab-pane>
+    <el-tab-pane label="订单管理" name="third">
+
+      <OrderManage />
+    </el-tab-pane>
   </el-tabs>
 </template>
 
@@ -16,9 +19,10 @@
 import {mapActions,mapState,mapMutations} from 'vuex';
 import Goods from '../goodsManage';
 import ServiceManage from '../ServiceManage/serviceManage.vue';
+import OrderManage from '../OrderManage/orderManage.vue';
 export default {
   components:{
-    Goods,ServiceManage
+    Goods,ServiceManage,OrderManage
   },
   data:function(){
     return{

@@ -17,6 +17,8 @@ import NoCheck from './components/manage/backStage/UserManage/NoCheck.vue'
 import GateApply from './components/manage/beforeStage/GateApply/gateApply.vue'
 import TradeManage from './components/manage/beforeStage/TradeManage/tradeManage.vue'
 import DataAnalysis from './components/manage/backStage/DataAnalysis/dataAnalysis.vue'
+import Ri from './components/ri/index.vue'
+import Tj from './components/tj/index.vue'
 
 Vue.use(Router)
 
