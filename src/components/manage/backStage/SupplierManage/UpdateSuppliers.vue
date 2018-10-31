@@ -27,8 +27,9 @@
 </template>
 
 <script>
+import { createNamespacedHelpers } from "vuex";
+const { mapActions, mapState } = createNamespacedHelpers("clf");
 import axios from "axios";
-import { mapActions, mapState } from "vuex";
 export default {
   props: ["updateVisible"],
   data() {
@@ -37,7 +38,7 @@ export default {
       name: "",
       phone: "",
       addr: "",
-      isChecked:""
+      isChecked: ""
     };
   },
   methods: {
@@ -56,13 +57,13 @@ export default {
         console.log("进入确认修改");
         this.$emit("update:updateVisible", false);
         // this.setSuppliers();
-        this.setSuppliers({page:this.pagination.curpage});
+        this.setSuppliers({ page: this.pagination.curpage });
       });
     },
     ...mapActions(["setSuppliers"])
   },
   computed: {
-    ...mapState(["supplier","pagination"])
+    ...mapState(["supplier", "pagination"])
   },
   components: {}
 };

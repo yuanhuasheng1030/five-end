@@ -53,14 +53,15 @@
 </template>
 
 <script>
+import { createNamespacedHelpers } from "vuex";
+const { mapActions, mapState } = createNamespacedHelpers("clf");
 import axios from "axios";
-import { mapActions, mapState } from "vuex";
 export default {
   data: function() {
     return {
       // suppliers:[]
       dialogVisible: false,
-      delId: "",
+      delId: ""
     };
   },
   // 创建时的渲染
@@ -81,9 +82,9 @@ export default {
         method: "delete",
         url: "/suppliers/" + id
       }).then(Response => {
-        this.setSuppliers({page:this.pagination.curpage});
-        
-      // this.setSuppliers({ curpage });
+        this.setSuppliers({ page: this.pagination.curpage });
+
+        // this.setSuppliers({ curpage });
       });
       this.dialogVisible = false;
     },
@@ -95,14 +96,14 @@ export default {
     },
     // 分页
     changePage(page) {
-      console.log("显示当前页",page);
+      console.log("显示当前页", page);
       this.setSuppliers({ page });
     },
     ...mapActions(["setSuppliers", "setSupplier"])
   },
 
   computed: {
-    ...mapState(["suppliers", "supplier","pagination"])
+    ...mapState(["suppliers", "supplier", "pagination"])
   },
   comments: {}
 };

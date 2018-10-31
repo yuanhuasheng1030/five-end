@@ -28,45 +28,46 @@
 </template>
 
 <script>
-import { mapActions ,mapState} from "vuex";
-import axios from 'axios';
+import { createNamespacedHelpers } from "vuex";
+const { mapActions, mapState } = createNamespacedHelpers("clf");
+import axios from "axios";
 export default {
-  data:function(){
+  data: function() {
     return {
-      dialogFromVisible:false,
-      formLabelWidth:"80px",
-      name:'',
-      phone:'',
-      addr:'',
-      isChecked:''
-    }
+      dialogFromVisible: false,
+      formLabelWidth: "80px",
+      name: "",
+      phone: "",
+      addr: "",
+      isChecked: ""
+    };
   },
-  methods:{
-    AddSuppliers:function(){
+  methods: {
+    AddSuppliers: function() {
       axios({
-        url:"/suppliers",
-        method:"post",
-        data:{
-          name:this.name,
-          phone:this.phone,
-          addr:this.addr,
-          isChecked:this.isChecked
+        url: "/suppliers",
+        method: "post",
+        data: {
+          name: this.name,
+          phone: this.phone,
+          addr: this.addr,
+          isChecked: this.isChecked
         }
-      }).then((response)=>{
+      }).then(response => {
         // this.setSuppliers();
         this.dialogFromVisible = false;
-        this.name='';
-        this.phone='';
-        this.addr='';
-        this.isChecked='';
-        this.setSuppliers({page:this.pagination.curpage});
+        this.name = "";
+        this.phone = "";
+        this.addr = "";
+        this.isChecked = "";
+        this.setSuppliers({ page: this.pagination.curpage });
       });
     },
     ...mapActions(["setSuppliers"])
   },
-   computed: {
-    ...mapState(["suppliers", "supplier","pagination"])
-  },
+  computed: {
+    ...mapState(["suppliers", "supplier", "pagination"])
+  }
 };
 </script>
 

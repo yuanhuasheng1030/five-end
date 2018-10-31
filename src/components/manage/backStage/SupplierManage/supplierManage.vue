@@ -16,33 +16,31 @@ import SuppliersTable from "./SuppliersTable.vue";
 import UpdateSuppliers from "./UpdateSuppliers.vue";
 import SearchSuppliers from "./SearchSuppliers.vue";
 // import SuppliersPage from "./SuppliersPage.vue"
+import { createNamespacedHelpers } from "vuex";
+const { mapActions, mapState } = createNamespacedHelpers("clf");
+import axios from "axios";
 export default {
   data: function() {
     return {
-      updateVisible: false,
+      updateVisible: false
     };
   },
-  components:{
-    AddSuppliers,SuppliersTable,UpdateSuppliers,SearchSuppliers
+  created() {
+    this.setSuppliers();
+  },
+  methods: {
+    ...mapActions(["setSuppliers"])
+  },
+  components: {
+    AddSuppliers,
+    SuppliersTable,
+    UpdateSuppliers,
+    SearchSuppliers
     // SuppliersPage
   }
-}
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
 </style>

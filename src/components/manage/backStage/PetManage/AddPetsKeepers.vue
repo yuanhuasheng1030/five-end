@@ -52,37 +52,38 @@
 </template>
 
 <script>
-import { mapActions } from "vuex";
-import axios from 'axios';
+import { createNamespacedHelpers } from "vuex";
+const { mapActions, mapState } = createNamespacedHelpers("clf");
+import axios from "axios";
 export default {
-  data:function(){
+  data: function() {
     return {
-      dialogFromVisible:false,
-      formLabelWidth:"80px",
-      name:'',
-      phone:'',
-      addr:'',
-      isChecked:''
-    }
+      dialogFromVisible: false,
+      formLabelWidth: "80px",
+      name: "",
+      phone: "",
+      addr: "",
+      isChecked: ""
+    };
   },
-  methods:{
-    AddSuppliers:function(){
+  methods: {
+    AddSuppliers: function() {
       axios({
-        url:"/suppliers",
-        method:"post",
-        data:{
-          name:this.name,
-          phone:this.phone,
-          addr:this.addr,
-          isChecked:this.isChecked
+        url: "/suppliers",
+        method: "post",
+        data: {
+          name: this.name,
+          phone: this.phone,
+          addr: this.addr,
+          isChecked: this.isChecked
         }
-      }).then((response)=>{
+      }).then(response => {
         this.setSuppliers();
         this.dialogFromVisible = false;
-        this.name='';
-        this.phone='';
-        this.addr='';
-        this.isChecked=''
+        this.name = "";
+        this.phone = "";
+        this.addr = "";
+        this.isChecked = "";
       });
     },
     ...mapActions(["setSuppliers"])

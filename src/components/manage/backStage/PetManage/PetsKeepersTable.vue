@@ -91,13 +91,14 @@
 </template>
 
 <script>
+import { createNamespacedHelpers } from "vuex";
+const { mapActions, mapState } = createNamespacedHelpers("clf");
 import axios from "axios";
-import { mapActions,mapState } from "vuex";
 export default {
   data: function() {
     return {
       dialogVisible: false,
-      delId:''
+      delId: ""
     };
   },
   // 创建时的渲染
@@ -106,46 +107,44 @@ export default {
   },
   // 方法
   methods: {
-     // 删除
-    remove(id){
-      this.dialogVisible=true;
+    // 删除
+    remove(id) {
+      this.dialogVisible = true;
       this.delId = id;
     },
-    confirmDel(){
+    confirmDel() {
       let id = this.delId;
-      console.log(id,"shuahsihaihsiahio");
+      console.log(id, "shuahsihaihsiahio");
       axios({
-        method:"delete",
-        url:"/petsKeepers/"+id
-      }).then((Response)=>{
+        method: "delete",
+        url: "/petsKeepers/" + id
+      }).then(Response => {
         // if(this.pagination.rows==[]){
         //   console.log("空数组");
         //    this.setPetsKeepers({page:this.pagination.page});
         // }else{
-        this.setPetsKeepers({page:this.pagination.curpage});
+        this.setPetsKeepers({ page: this.pagination.curpage });
         // }
       });
-        this.dialogVisible=false;
+      this.dialogVisible = false;
     },
 
     // 修改
-    update(id){
+    update(id) {
       console.log(id);
-      this.$emit('update:updateVisible',true);
+      this.$emit("update:updateVisible", true);
       this.setPetsKeeper(id);
     },
-    changePage(page){
-            this.setPetsKeepers({ page });
-        },
-    ...mapActions(['setPetsKeepers','setPetsKeeper'])
-  
+    changePage(page) {
+      this.setPetsKeepers({ page });
+    },
+    ...mapActions(["setPetsKeepers", "setPetsKeeper"])
   },
   // 计算属性
-  computed:{
-    ...mapState(['petsKeepers','petsKeeper','pagination'])
+  computed: {
+    ...mapState(["petsKeepers", "petsKeeper", "pagination"])
   },
-  comments:{}
- 
+  comments: {}
 };
 </script>
 <style scoped>
@@ -162,7 +161,7 @@ export default {
   margin-bottom: 0;
   width: 50%;
 }
-.page{
-    margin-top: 15PX;
+.page {
+  margin-top: 15px;
 }
 </style>

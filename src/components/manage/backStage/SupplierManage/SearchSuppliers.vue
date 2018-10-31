@@ -13,41 +13,40 @@
 </template>
 
 <script>
-import {mapActions} from "vuex";
+import { createNamespacedHelpers } from "vuex";
+const { mapActions, mapState } = createNamespacedHelpers("clf");
+import axios from "axios";
 export default {
- data:function(){
-     return {
-         input:'',
-         select:''
-     }
- },
- methods: {
-     searchBtn(){
-         console.log(222);
-         console.log(this.select);
-         console.log(this.input);
-         this.setSuppliers({
-          type:this.select,
-          value:this.input,
-          page:1,
-          rows:3
-      });  
-     },
-     ...mapActions(["setSuppliers"])
-     
- },
- components:{
- }
+  data: function() {
+    return {
+      input: "",
+      select: ""
+    };
+  },
+  methods: {
+    searchBtn() {
+      console.log(222);
+      console.log(this.select);
+      console.log(this.input);
+      this.setSuppliers({
+        type: this.select,
+        value: this.input,
+        page: 1,
+        rows: 3
+      });
+    },
+    ...mapActions(["setSuppliers"])
+  },
+  components: {}
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.inputBox{
-    width: 500px;
+.inputBox {
+  width: 500px;
 }
-.selectBox{
-    width: 120px;
+.selectBox {
+  width: 120px;
 }
-
 </style>

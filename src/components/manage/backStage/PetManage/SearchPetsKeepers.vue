@@ -15,7 +15,9 @@
 </template>
 
 <script>
-import { mapActions } from "vuex";
+import { createNamespacedHelpers } from "vuex";
+const { mapActions, mapState } = createNamespacedHelpers("clf");
+import axios from "axios";
 export default {
   data: function() {
     return {
@@ -24,15 +26,15 @@ export default {
     };
   },
   methods: {
-    searchBtn:function() {
+    searchBtn: function() {
       this.setPetsKeepers({
-          type:this.select,
-          value:this.input,
-          page:1,
-          rows:3
+        type: this.select,
+        value: this.input,
+        page: 1,
+        rows: 3
       });
     },
-    ...mapActions(['setPetsKeepers'])
+    ...mapActions(["setPetsKeepers"])
   },
   comments: {}
 };

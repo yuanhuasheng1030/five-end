@@ -21,35 +21,32 @@
 </template>
 
 <script>
-import axios from 'axios';
-import { mapActions,mapState} from 'vuex';
+import { createNamespacedHelpers } from "vuex";
+const { mapActions, mapState } = createNamespacedHelpers("clf");
+import axios from "axios";
 export default {
-  props:['updateVisible'],
-  data(){
-    return {
-
-    }
+  props: ["updateVisible"],
+  data() {
+    return {};
   },
-  methods:{
+  methods: {
     updateConfirm(id) {
       console.log(222222222222222222222);
       axios({
-        url:'/petsKeepers'+id,
-        method:'put',
-        data:{
-
-        }
-      }).then((reponse)=>{
-        this.$emit('update:updateVisible',false);
+        url: "/petsKeepers" + id,
+        method: "put",
+        data: {}
+      }).then(reponse => {
+        this.$emit("update:updateVisible", false);
         this.setPetsKeepers();
       });
     },
-    ...mapActions(['setPetsKeeper'])
+    ...mapActions(["setPetsKeeper"])
   },
-  computed:{
-    ...mapState(['petsKeeper'])
+  computed: {
+    ...mapState(["petsKeeper"])
   },
-  components:{}
+  components: {}
 };
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
