@@ -7,7 +7,8 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     goods: [],
-    good: {}
+    good: {},
+    pagenation:{}
   },
   mutations: {
     setGoods(state, goods) {
@@ -18,7 +19,10 @@ export default new Vuex.Store({
     },
     setGood(state, good) {
       state.good = good
-    }
+    },
+    pagenation(state, pagenation) {
+      state.pagenation = pagenation
+    },
   },
   actions: {
     setGood({
@@ -47,13 +51,16 @@ export default new Vuex.Store({
       commit,
       dispatch
     }, payload) {
+      console.log('====================================');
+      console.log(90,payload.page,payload.rows);
+      console.log('====================================');
       axios({
         method: "get",
         url: "/trademanage/table/shops/",
         params: {
           id: payload.id,
-          page: payload.page || 1,
-          rows: payload.rows || 3,
+          page: payload.page ||this.state.pagenation.page|| 1,
+          rows: payload.rows ||this.state.pagenation.rows|| 2,
           type: payload.type,
           value: payload.value
         }
@@ -62,7 +69,8 @@ export default new Vuex.Store({
           console.log(22, response.data);
         commit('setGoods', response.data);
         }else{
-          commit('setGoods', response.data.rows[0].shopGoods);
+          commit('setGoods', response.data);
+          commit('pagenation', response.data.page);
         }
         // commit('setPage',response.data);
       });

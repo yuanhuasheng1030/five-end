@@ -1,5 +1,5 @@
 <template>
-  <el-table :data="goods" style="width: 100%">
+  <el-table :data="goods.ary" style="width: 100%">
     <el-table-column type="expand">
       <template slot-scope="props">
         <el-form label-position="left" inline class="demo-table-expand">
@@ -47,7 +47,6 @@
       <template slot-scope="scope">
         <el-button type="primary" @click="rungoods(scope.$index)" icon="el-icon-edit" circle></el-button>
         <el-button type="danger" @click="deletegoods(scope.$index)" icon="el-icon-delete" circle></el-button>
-
       </template>
     </el-table-column>
   </el-table>
@@ -95,7 +94,6 @@ export default {
     });
     },
     rungoods: function(item) {
-      console.log(221, item);
       this.$emit("update:open",true);
       this.setGood({id:this.id,index:item})
     }

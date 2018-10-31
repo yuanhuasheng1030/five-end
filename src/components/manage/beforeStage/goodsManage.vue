@@ -6,18 +6,20 @@
     </div>
     <Alter  :open.sync="open"/>
     <TableGoods :open.sync="open" />
+    <Page />
   </div>
 </template>
 <script>
 // import Page from './Page'
 import TableGoods from "./goodscomponents/tablegoods";
+import Page from "./goodscomponents/page";
 import Add from "./goodscomponents/Add";
 import Alter from "./goodscomponents/alter";
 import Find from "./goodscomponents/Find";
 import { mapActions, mapState, mapMutations } from "vuex";
 export default {
   components: {
-    TableGoods,Add,Alter,Find
+    TableGoods,Add,Alter,Find,Page
   },
   data: function() {
     return {
