@@ -38,6 +38,12 @@
                             供应商管理系统
                           </span>
                         </el-menu-item>
+
+                        <el-menu-item index="/backStage/dataAnalysis">
+                          <span slot="title">
+                            数据统计
+                          </span>
+                        </el-menu-item>
                       </el-menu>
 
                 </div>

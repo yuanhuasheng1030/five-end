@@ -12,7 +12,9 @@
 </template>
 
 <script>
-import {mapActions, mapMutations, mapState} from 'vuex'
+// import {mapActions, mapMutations, mapState} from 'vuex'
+import { createNamespacedHelpers } from 'vuex'
+const { mapActions,mapState,mapMutations } = createNamespacedHelpers('cdw')
     export default {
         data: function () {
             return {

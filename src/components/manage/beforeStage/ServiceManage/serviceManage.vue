@@ -74,7 +74,9 @@ import Search from "./Search.vue";
 import Page from "./Page.vue";
 import Add from "./Add.vue";
 import Update from "./Update.vue";
-import { mapState, mapActions, mapMutations } from "vuex";
+// import { mapState, mapActions, mapMutations } from "vuex";
+import { createNamespacedHelpers } from 'vuex'
+const { mapActions,mapState,mapMutations } = createNamespacedHelpers('cdw')
 import axios from 'axios';
 export default {
   data: function() {

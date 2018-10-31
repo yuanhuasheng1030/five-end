@@ -50,14 +50,14 @@ const actions = {
   setGoods({
     commit,
     dispatch
-  }, payload) {
+  }, payload={}) {
     axios({
       method: "get",
       url: "/trademanage/table/shops/",
       params: {
         id: payload.id,
-        page: payload.page ||this.state.pagenation.page|| 1,
-        rows: payload.rows ||this.state.pagenation.rows|| 2,
+        page: payload.page || 1,
+        rows: payload.rows || 2,
         type: payload.type,
         value: payload.value
       }

@@ -3,91 +3,96 @@ import Vuex from 'vuex'
 import axios from 'axios'
 Vue.use(Vuex)
 const state = {
-  goods: [],
-  good: {},
-  pagenation:{}
+  services: [],
+    service: {},
+    pagination: {},
+    search: {},
+    dialogUpdateVisible: false,
+    username: "张雨霖",
+    shopName: "爱宠小店"
 }
 const mutations = {
-  setGoods(state, goods) {
-    state.goods = goods;
+  setServices(state, services) {
+    state.services = services
   },
-  opened(state, opened) {
-    state.opened = opened
+  setPagination(state, pagination) {
+    state.pagination = pagination
   },
-  setGood(state, good) {
-    state.good = good
+  setSearch(state, search) {
+    state.search = search
   },
-  pagenation(state, pagenation) {
-    state.pagenation = pagenation
+  setService(state, service) {
+    state.service = service
   },
+  setDialogUpdateVisible(state, upload) {
+    state.dialogUpdateVisible = upload
+  }
 }
 const getters = {
 
 }
 const actions = {
-  setGood({
-    commit,
-    dispatch
-  }, {
-    id,
-    index
-  }) {
-    console.log(23, {
-      id,
-      index
-    });
-    axios({
-      url: "/trademanage/good",
-      method: "get",
+  setServices({
+    commit
+  }, payload = {}) {
+    axios.get('/services', {
       params: {
-        id,
-        index
+        name: payload.name || '',
+        value: payload.value || '',
+        username: this.state.username,
+        shopName: this.state.shopName,
+        page: payload.page || 1,
+        rows: payload.rows || 3
       }
-    }).then(response => {
-      commit('setGood', response.data);
-    });
-  },
-  setGoods({
-    commit,
-    dispatch
-  }, payload) {
-    axios({
-      method: "get",
-      url: "/trademanage/table/shops/",
-      params: {
-        id: payload.id,
-        page: payload.page ||this.state.pagenation.page|| 1,
-        rows: payload.rows ||this.state.pagenation.rows|| 2,
-        type: payload.type,
-        value: payload.value
-      }
-    }).then(response => {
-      if(payload.type){
-        console.log(22, response.data);
-      commit('setGoods', response.data);
-      }else{
-        commit('setGoods', response.data);
-        commit('pagenation', response.data.page);
-      }
-      // commit('setPage',response.data);
-    });
-  },
-  setAdd({
-    commit,
-    dispatch
-  }, payload) {
-    axios({
-      url: '/trademanage/add',
-      method: 'post',
-      data: {
-        ...payload
-      }
-    }).then(() => {
-      dispatch('setGoods', {
-        id: payload.id
-      });
+    }).then((response) => {
+
+      commit('setServices', response.data.rows)
+      commit('setPagination', response.data)
     })
   },
+  addService({
+    dispatch
+  }, payload = {}) {
+    axios.post('/services', {
+      newService: { ...payload,
+        username: this.state.cdw.username,
+        shopName: this.state.cdw.shopName
+      }
+    }).then(() => {
+      dispatch('setServices');
+    })
+  },
+  setService({
+    commit
+  }, id) {
+    axios.get('/services/' + id, {}).then((response) => {
+      commit('setService', response.data)
+    })
+  },
+  updateService({
+    dispatch
+  }, payload = {}) {
+    axios({
+      method: "put",
+      url: "/services/" + this.state.cdw.service._id,
+      data: {
+        name: this.state.cdw.service.name,
+        serviceType: this.state.cdw.service.serviceType,
+        basePrice: this.state.cdw.service.basePrice,
+        VIPprice: this.state.cdw.service.VIPprice,
+        serviceStandard: this.state.cdw.service.serviceStandard,
+        timeCost: this.state.cdw.service.timeCost,
+        adaptPets: this.state.cdw.service.adaptPets,
+        username: this.state.cdw.username,
+        shopName: this.state.cdw.shopName,
+        startTime: this.state.cdw.service.startTime,
+        endTime: this.state.cdw.service.endTime,
+        schedule: `${this.state.cdw.service.startTime}-${this.state.cdw.service.endTime}`
+      }
+    }).then(() => {
+      dispatch('setServices');
+    })
+  }
 }
 export default {
   namespaced:true,

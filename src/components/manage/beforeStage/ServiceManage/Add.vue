@@ -78,7 +78,9 @@
 </div>
 </template>
 <script>
-import {mapActions} from 'vuex'
+// import {mapActions} from 'vuex'
+import { createNamespacedHelpers } from 'vuex'
+const { mapActions,mapState,mapMutations } = createNamespacedHelpers('cdw')
 export default {
     data() {
         return {
