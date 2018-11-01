@@ -77,7 +77,7 @@ const { mapMutations } = createNamespacedHelpers('cdw')
                         pwd: this.ruleForm2.password,
                     },
                 }).then((response) => {
-                    // console.log(response.data.status)
+                    console.log(response.data.status)
                     if(response.data.status == 0){
                       // console.log("平台管理员登录成功")
                        this.$router.push("backStage");    
