@@ -124,7 +124,7 @@
                     console.log(response.data, '332222');
 
                     let a=response.data.rows
-                    a=lodash.filter(a,function(o) { return o.shop.$id==location.href.split("=")[1]; })
+                    a=lodash.filter(a,function(o) { return o.shops._id==location.href.split("=")[1]; })
                     console.log(a);
                     
                     this.orderAry1 = a

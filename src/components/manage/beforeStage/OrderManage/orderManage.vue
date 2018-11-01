@@ -25,7 +25,8 @@
   import Lcnopay from "./lcnopay.vue";
   import Lccomplete from "./lccomplete.vue";
   import Revocatory from "./revocatory.vue";
-  import LcHistory from "./lcHistory.vue"
+  import LcHistory from "./lcHistory.vue";
+  import lodash from "lodash";
   export default {
 
     props: {

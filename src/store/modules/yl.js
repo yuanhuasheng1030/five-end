@@ -57,7 +57,7 @@ const actions = {
       params: {
         id: payload.id,
         page: payload.page ||this.state.yl.pagenation.page|| 1,
-        rows: payload.rows ||this.state.yl.pagenation.rows|| 2,
+        rows: payload.rows ||this.state.yl.pagenation.rows|| 10,
         type: payload.type,
         value: payload.value
       }

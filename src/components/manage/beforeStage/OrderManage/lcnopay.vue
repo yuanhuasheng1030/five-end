@@ -61,6 +61,8 @@
 </template>
 
 <script>
+
+    import lodash from "lodash";
     import axios from "axios";
     export default {
 
@@ -121,7 +123,10 @@
                     }
                 }).then(response => {
                     console.log(response.data, '332222');
-                    this.orderAry = response.data.rows
+                    let a = response.data.rows;
+                    a=lodash.filter(a,function(o){return o.shops._id==location.href.split("=")[1]})
+                    this.orderAry =a;
+                    
                     this.orderAryLength = response.data.total
                 });
             },
